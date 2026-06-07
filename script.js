@@ -58,6 +58,128 @@
 
 
 /* =============================================
+   CARROSSEL INFINITO DE DEPOIMENTOS
+   ============================================= */
+(function () {
+  var carousel = document.getElementById('depoimentos-carousel');
+  if (!carousel) return;
+
+  var track        = carousel.querySelector('.carousel-track');
+  var realSlides   = Array.from(carousel.querySelectorAll('.carousel-slide'));
+  var prevBtn      = carousel.querySelector('.carousel-btn--prev');
+  var nextBtn      = carousel.querySelector('.carousel-btn--next');
+  var dotsWrap     = carousel.closest('.carousel-wrapper').querySelector('.carousel-dots');
+
+  var count        = realSlides.length; // 7
+  var current      = 1;                 // 1 = primeiro slide real (após clone do último)
+  var transitioning = false;
+  var DURATION     = 460;               // ms
+
+  /* ---- Clona primeiro e último para loop infinito ---- */
+  var firstClone = realSlides[0].cloneNode(true);
+  var lastClone  = realSlides[count - 1].cloneNode(true);
+  firstClone.setAttribute('aria-hidden', 'true');
+  lastClone.setAttribute('aria-hidden', 'true');
+  track.appendChild(firstClone);
+  track.prepend(lastClone);
+
+  var allSlides = Array.from(track.querySelectorAll('.carousel-slide'));
+  var total     = allSlides.length; // count + 2
+
+  /* ---- Ajusta larguras (chamado no init e no resize) ---- */
+  function setWidths() {
+    var w = carousel.offsetWidth;
+    track.style.width     = (total * w) + 'px';
+    allSlides.forEach(function (s) { s.style.width = w + 'px'; });
+    moveTo(current, false);
+  }
+
+  /* ---- Move o track ---- */
+  function moveTo(index, animate) {
+    track.style.transition = animate === false
+      ? 'none'
+      : 'transform ' + DURATION + 'ms ease';
+    track.style.transform  = 'translateX(-' + (index * carousel.offsetWidth) + 'px)';
+    current = index;
+    updateDots();
+    pauseOtherVideos();
+  }
+
+  /* ---- Salta silenciosamente ao bater nos clones ---- */
+  track.addEventListener('transitionend', function () {
+    transitioning = false;
+    if (current === 0) {
+      moveTo(count, false);           // estava no clone do último → pula para o real
+    } else if (current === total - 1) {
+      moveTo(1, false);               // estava no clone do primeiro → pula para o real
+    }
+  });
+
+  /* ---- Dots ---- */
+  var dots = [];
+  realSlides.forEach(function (_, i) {
+    var btn = document.createElement('button');
+    btn.className = 'carousel-dot';
+    btn.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+    btn.addEventListener('click', function () { goTo(i + 1); });
+    dotsWrap.appendChild(btn);
+    dots.push(btn);
+  });
+
+  function updateDots() {
+    var real = current - 1;
+    if (real < 0)      real = count - 1;
+    if (real >= count) real = 0;
+    dots.forEach(function (d, i) {
+      d.classList.toggle('is-active', i === real);
+    });
+  }
+
+  /* ---- Pausa vídeos fora do slide ativo ---- */
+  function pauseOtherVideos() {
+    allSlides.forEach(function (s, i) {
+      var vid = s.querySelector('video');
+      if (vid && i !== current) vid.pause();
+    });
+  }
+
+  /* ---- Navegar ---- */
+  function goTo(index) {
+    if (transitioning) return;
+    transitioning = true;
+    moveTo(index, true);
+  }
+
+  prevBtn.addEventListener('click', function () { goTo(current - 1); });
+  nextBtn.addEventListener('click', function () { goTo(current + 1); });
+
+  /* ---- Swipe (touch) ---- */
+  var touchX = 0;
+  var dragX  = 0;
+
+  track.addEventListener('touchstart', function (e) {
+    touchX = e.touches[0].clientX;
+  }, { passive: true });
+
+  track.addEventListener('touchmove', function (e) {
+    dragX = e.touches[0].clientX - touchX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', function () {
+    if (Math.abs(dragX) > 48) {
+      goTo(dragX < 0 ? current + 1 : current - 1);
+    }
+    dragX = 0;
+  });
+
+  /* ---- Init ---- */
+  setWidths();
+  updateDots();
+  window.addEventListener('resize', setWidths);
+})();
+
+
+/* =============================================
    FAQ — ACORDEÃO
    ============================================= */
 (function () {

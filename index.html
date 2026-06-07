@@ -383,26 +383,71 @@
       <p class="section-label animate-on-scroll">Resultados reais</p>
       <h2 class="section-title animate-on-scroll">O que dizem quem já viveu a Imersão</h2>
 
-      <div class="testimonials-grid">
-        <!-- Substitua os placeholders por prints ou vídeos de depoimentos reais -->
-        <div class="testimonial-placeholder animate-on-scroll">
-          <div class="placeholder-inner">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Insira print ou vídeo<br>de depoimento aqui</span>
+      <!-- Carrossel infinito de depoimentos -->
+      <div class="carousel-wrapper animate-on-scroll animate-delay-1">
+        <div class="carousel" id="depoimentos-carousel">
+          <div class="carousel-track">
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-1.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-2.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-3.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-4.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-5.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-6.mp4" controls preload="metadata" playsinline></video>
+            </div>
+            <div class="carousel-slide">
+              <video src="assets/depoimentos/depoimento-7.mp4" controls preload="metadata" playsinline></video>
+            </div>
           </div>
+
+          <button class="carousel-btn carousel-btn--prev" aria-label="Depoimento anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="carousel-btn carousel-btn--next" aria-label="Próximo depoimento">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
         </div>
-        <div class="testimonial-placeholder animate-on-scroll animate-delay-1">
-          <div class="placeholder-inner">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Insira print ou vídeo<br>de depoimento aqui</span>
-          </div>
-        </div>
-        <div class="testimonial-placeholder animate-on-scroll animate-delay-2">
-          <div class="placeholder-inner">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span>Insira print ou vídeo<br>de depoimento aqui</span>
-          </div>
-        </div>
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =============================================
+       MOMENTOS DE NETWORKING
+       ============================================= -->
+  <section id="networking" class="section-networking">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Conexões que ficam</p>
+      <h2 class="section-title animate-on-scroll">Momentos de Networking</h2>
+    </div>
+    <div class="marquee-outer">
+      <!-- faixa duplicada para loop contínuo sem salto -->
+      <div class="marquee-track">
+        <img src="assets/networking/networking-1.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-2.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-3.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-4.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-5.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-6.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-7.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy">
+        <img src="assets/networking/networking-1.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-2.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-3.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-4.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-5.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-6.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
+        <img src="assets/networking/networking-7.jpeg" alt="Momento de networking na Imersão" class="marquee-img" loading="lazy" aria-hidden="true">
       </div>
     </div>
   </section>
