@@ -180,6 +180,62 @@
 
 
 /* =============================================
+   SELETOR DE TEMA — somente em modo ?preview
+   Produção (sem ?preview) sempre usa o ivory padrão.
+   ============================================= */
+(function () {
+  /* aceita ?preview (servidor) ou #preview (arquivo local file://) */
+  var isPreview = (location.search + location.hash).indexOf('preview') !== -1;
+  if (!isPreview) return; // visitante real: nada acontece
+
+  var themes = [
+    { id: '',      label: 'Ivory' },
+    { id: 'split', label: 'Grafite' },
+    { id: 'white', label: 'Branco' }
+  ];
+
+  /* restaura escolha da sessão de preview;
+     na 1ª vez, parte do tema de produção definido no <html> */
+  var saved = localStorage.getItem('mr-theme');
+  if (saved === null) saved = document.documentElement.getAttribute('data-theme') || '';
+  applyTheme(saved);
+
+  var bar = document.createElement('div');
+  bar.className = 'theme-switch';
+
+  themes.forEach(function (t) {
+    var btn = document.createElement('button');
+    btn.textContent = t.label;
+    btn.dataset.theme = t.id;
+    btn.addEventListener('click', function () {
+      applyTheme(t.id);
+      localStorage.setItem('mr-theme', t.id);
+      updateActive();
+    });
+    bar.appendChild(btn);
+  });
+
+  document.body.appendChild(bar);
+  updateActive();
+
+  function applyTheme(id) {
+    if (id) {
+      document.documentElement.setAttribute('data-theme', id);
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+  }
+
+  function updateActive() {
+    var current = document.documentElement.getAttribute('data-theme') || '';
+    bar.querySelectorAll('button').forEach(function (b) {
+      b.classList.toggle('is-active', b.dataset.theme === current);
+    });
+  }
+})();
+
+
+/* =============================================
    FAQ — ACORDEÃO
    ============================================= */
 (function () {

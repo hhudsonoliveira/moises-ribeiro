@@ -3,3 +3,10 @@
 /~$Copy 1.docx
 /img.jpeg
 /Media.mp4
+
+# Pastas de origem (cópias web estão em assets/depoimentos e assets/networking)
+/Depoimentos/
+/Momentos de Networking/
+
+# Screenshots de preview gerados localmente
+/preview-*.png

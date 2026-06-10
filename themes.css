@@ -1,0 +1,149 @@
+/* =================================================================
+   SISTEMA DE TEMAS — Moisés Ribeiro
+   -----------------------------------------------------------------
+   :root            → IVORY PREMIUM  (tema de produção, padrão)
+   [data-theme=split] → CLARO + GRAFITE (hero e oferta escuros)
+   [data-theme=white] → BRANCO MINIMALISTA
+   Hexes de ouro/ivory baseados em paletas de marca de luxo 2026
+   (ivory ~#F4EADE, ouro premium #C69B3C–#D4AF37).
+   ================================================================= */
+
+/* =============================================
+   IVORY PREMIUM  (padrão)
+   ============================================= */
+:root {
+  --bg:           #F7F2E8;   /* marfim quente */
+  --bg-alt:       #EFE6D5;   /* bege quente p/ seções alternadas */
+  --bg-card:      #FFFFFF;   /* cards brancos */
+
+  --ink:          #2A241B;   /* espresso — texto principal */
+  --muted:        #6E665A;   /* taupe — texto secundário */
+
+  --gold:         #C2982F;   /* ouro metálico — preenchimentos/filetes */
+  --gold-light:   #DCBA5E;   /* ouro claro — hover/realces */
+  --gold-ink:     #8A6B1E;   /* ouro escuro — TEXTO legível no claro */
+  --gold-dim:     rgba(194,152,47,0.14);
+  --on-gold:      #1C1812;   /* texto sobre botão dourado */
+
+  --border:       rgba(138,107,30,0.32);
+  --border-sub:   rgba(42,36,27,0.12);
+
+  --hero-grad:    linear-gradient(160deg,#FAF6EC 0%,#EFE6D5 100%);
+  --hero-glow:    radial-gradient(circle, rgba(194,152,47,0.12) 0%, transparent 68%);
+
+  --shadow-strong: 0 24px 60px rgba(60,48,20,0.16);
+  --shadow-soft:   0 14px 34px rgba(60,48,20,0.10);
+}
+
+/* =============================================
+   CLARO + GRAFITE (split)
+   Base clara, com hero e oferta em grafite escuro
+   ============================================= */
+[data-theme="split"] {
+  --bg:           #F7F4EE;
+  --bg-alt:       #FFFFFF;
+  --bg-card:      #FFFFFF;
+
+  --ink:          #211D17;
+  --muted:        #6B6358;
+
+  --gold:         #C2982F;
+  --gold-light:   #DCBA5E;
+  --gold-ink:     #8A6B1E;
+  --gold-dim:     rgba(194,152,47,0.14);
+  --on-gold:      #1C1812;
+
+  --border:       rgba(138,107,30,0.30);
+  --border-sub:   rgba(33,29,23,0.11);
+
+  --hero-grad:    linear-gradient(160deg,#16151B 0%,#0E0E10 100%);
+  --hero-glow:    radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 68%);
+
+  --shadow-strong: 0 24px 60px rgba(30,24,10,0.18);
+  --shadow-soft:   0 14px 34px rgba(30,24,10,0.10);
+}
+
+/* hero escuro: re-escopa os tokens p/ texto claro só nesta seção */
+[data-theme="split"] .hero {
+  --ink:        #F5F1E6;
+  --muted:      #B8AE9C;
+  --gold-ink:   #E8C97A;
+  --border-sub: rgba(255,255,255,0.12);
+}
+
+/* oferta escura: mesmo truque de re-escopo */
+[data-theme="split"] .section-offer {
+  background: linear-gradient(160deg,#16151B 0%,#0E0E10 100%);
+  --ink:        #F5F1E6;
+  --muted:      #B8AE9C;
+  --gold-ink:   #E8C97A;
+  --bg-card:    #1C1B20;
+  --border-sub: rgba(255,255,255,0.12);
+}
+
+/* =============================================
+   BRANCO MINIMALISTA
+   ============================================= */
+[data-theme="white"] {
+  --bg:           #FFFFFF;
+  --bg-alt:       #F6F5F2;
+  --bg-card:      #FFFFFF;
+
+  --ink:          #1A1A1A;
+  --muted:        #6B6B6B;
+
+  --gold:         #CBA23A;
+  --gold-light:   #E2C56A;
+  --gold-ink:     #927312;
+  --gold-dim:     rgba(203,162,58,0.12);
+  --on-gold:      #1A1A1A;
+
+  --border:       rgba(180,140,40,0.30);
+  --border-sub:   rgba(0,0,0,0.08);
+
+  --hero-grad:    linear-gradient(180deg,#FFFFFF 0%,#FAFAF8 100%);
+  --hero-glow:    radial-gradient(circle, rgba(203,162,58,0.08) 0%, transparent 70%);
+
+  --shadow-strong: 0 20px 50px rgba(0,0,0,0.09);
+  --shadow-soft:   0 12px 30px rgba(0,0,0,0.06);
+}
+
+
+/* =============================================
+   SELETOR DE TEMA (somente em modo ?preview)
+   Injetado via JS; oculto para visitantes reais.
+   ============================================= */
+.theme-switch {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1000;
+  display: flex;
+  gap: 6px;
+  padding: 6px;
+  background: rgba(20,18,14,0.82);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+}
+
+.theme-switch button {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #E8E0CF;
+  background: transparent;
+  border: none;
+  border-radius: 30px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.theme-switch button:hover { color: #fff; }
+
+.theme-switch button.is-active {
+  background: #C2982F;
+  color: #1C1812;
+}

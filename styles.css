@@ -1,18 +1,8 @@
 /* =============================================
-   CUSTOM PROPERTIES — Paleta Moisés Ribeiro
+   CUSTOM PROPERTIES — tokens estruturais
+   (as cores/paleta vivem em themes.css)
    ============================================= */
 :root {
-  --bg:          #0E0E10;
-  --bg-alt:      #1A1A1D;
-  --bg-card:     #1E1E22;
-  --gold:        #C9A84C;
-  --gold-light:  #E8C97A;
-  --gold-dim:    rgba(201, 168, 76, 0.12);
-  --white:       #FFFFFF;
-  --muted:       #8E8E98;
-  --border:      rgba(201, 168, 76, 0.22);
-  --border-sub:  rgba(255, 255, 255, 0.07);
-
   --font-title:  'Montserrat', sans-serif;
   --font-body:   'Inter', sans-serif;
 
@@ -33,7 +23,7 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg);
-  color: var(--white);
+  color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.65;
@@ -57,8 +47,8 @@ button { font-family: inherit; cursor: pointer; }
   padding-inline: var(--pad-x);
 }
 
-.gold { color: var(--gold); }
-.gold-text { color: var(--gold); }
+.gold { color: var(--gold-ink); }
+.gold-text { color: var(--gold-ink); }
 
 .section-label {
   display: block;
@@ -66,7 +56,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-ink);
   text-align: center;
   margin-bottom: 10px;
 }
@@ -79,7 +69,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 800;
   line-height: 1.13;
   text-align: center;
-  color: var(--white);
+  color: var(--ink);
   margin-bottom: 48px;
 }
 
@@ -126,7 +116,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .btn--primary {
   background: var(--gold);
-  color: #0E0E10;
+  color: var(--on-gold);
 }
 
 .btn--primary:hover {
@@ -203,7 +193,7 @@ button { font-family: inherit; cursor: pointer; }
 .hero {
   position: relative;
   padding: 96px 0 80px;
-  background: linear-gradient(160deg, #0E0E10 0%, #1A1A1D 100%);
+  background: var(--hero-grad);
   overflow: hidden;
 }
 
@@ -215,7 +205,7 @@ button { font-family: inherit; cursor: pointer; }
   right: -80px;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 68%);
+  background: var(--hero-glow);
   pointer-events: none;
 }
 
@@ -298,7 +288,7 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.55);
+  box-shadow: var(--shadow-strong);
 }
 
 .hero-image-badge {
@@ -320,6 +310,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--gold-light); /* chip é escuro: mantém ouro claro */
 }
 
 @media (min-width: 768px) {
@@ -350,7 +341,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--border);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow-strong);
 }
 
 .video-wrapper video {
@@ -446,7 +437,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(16px, 3.2vw, 20px);
   font-style: italic;
   line-height: 1.55;
-  color: var(--white);
+  color: var(--ink);
   border-left: 3px solid var(--gold);
   padding-left: 20px;
   margin: 0;
@@ -521,7 +512,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .pain-item:first-child { border-top: 1px solid var(--border-sub); }
 
-.pain-item:hover { color: var(--white); }
+.pain-item:hover { color: var(--ink); }
 
 .pain-arrow {
   flex-shrink: 0;
@@ -540,7 +531,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.65;
 }
 
-.pain-conclusion strong { color: var(--white); font-weight: 600; }
+.pain-conclusion strong { color: var(--ink); font-weight: 600; }
 
 /* =============================================
    BENEFÍCIOS — 13 CARDS
@@ -577,7 +568,7 @@ button { font-family: inherit; cursor: pointer; }
 .benefit-card:hover {
   border-color: var(--border);
   transform: translateY(-4px);
-  box-shadow: 0 14px 36px rgba(0,0,0,0.36);
+  box-shadow: var(--shadow-soft);
 }
 
 .benefit-icon { color: var(--muted); margin-bottom: 14px; }
@@ -602,7 +593,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: color var(--transition);
 }
 
-.benefit-card:hover p { color: var(--white); }
+.benefit-card:hover p { color: var(--ink); }
 
 /* card premium: item 13 — ocupa linha inteira */
 .benefit-card--premium {
@@ -637,7 +628,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .benefit-premium-title {
   font-size: clamp(17px, 3.5vw, 22px) !important;
-  color: var(--white) !important;
+  color: var(--ink) !important;
   line-height: 1.3 !important;
 }
 
@@ -672,7 +663,7 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  box-shadow: 0 24px 56px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-strong);
 }
 
 .about-text { max-width: 560px; }
@@ -776,6 +767,11 @@ button { font-family: inherit; cursor: pointer; }
   text-align: center;
   position: relative;
   z-index: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: clamp(32px, 6vw, 56px) clamp(24px, 5vw, 48px);
 }
 
 .offer-urgency-tag {
@@ -784,7 +780,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 800;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #0E0E10;
+  color: var(--on-gold);
   background: var(--gold);
   border-radius: 20px;
   padding: 6px 18px;
@@ -849,7 +845,7 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   background: none;
   border: none;
-  color: var(--white);
+  color: var(--ink);
   font-family: var(--font-title);
   font-size: clamp(14px, 2.6vw, 17px);
   font-weight: 700;
@@ -968,7 +964,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: var(--radius) var(--radius) 0 0;
   border: 1px solid var(--border);
   border-bottom: none;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
+  box-shadow: var(--shadow-strong);
   background: #000;
 }
 
