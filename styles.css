@@ -195,6 +195,9 @@ button { font-family: inherit; cursor: pointer; }
   padding: 96px 0 80px;
   background: var(--hero-grad);
   overflow: hidden;
+  /* re-resolve o --ink desta seção (temas escurecem o hero);
+     sem isto os filhos sem `color` herdariam o --ink do body */
+  color: var(--ink);
 }
 
 /* brilho sutil dourado ao fundo */
@@ -751,6 +754,8 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--bg-alt);
   position: relative;
   overflow: hidden;
+  /* mesma razão do .hero: a oferta é re-escopada no tema grafite */
+  color: var(--ink);
 }
 
 .section-offer::before {

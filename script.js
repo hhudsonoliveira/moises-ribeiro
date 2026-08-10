@@ -181,7 +181,7 @@
 
 /* =============================================
    SELETOR DE TEMA — somente em modo ?preview
-   Produção (sem ?preview) sempre usa o ivory padrão.
+   Produção (sem ?preview) usa o tema definido no <html>: grafite.
    ============================================= */
 (function () {
   /* aceita ?preview (servidor) ou #preview (arquivo local file://) */
